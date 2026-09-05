@@ -2,7 +2,6 @@
 
 ![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python)
 ![FastAPI](https://img.shields.io/badge/Framework-FastAPI-009688?logo=fastapi)
-![License](https://img.shields.io/badge/License-MIT-green)
 
 A lightweight, high-performance **Cyber Range Laboratory Prototype** built with **FastAPI**. This project serves as a Proof of Concept (PoC) for an integrated cybersecurity training platform designed to bridge the gap between offensive exploration and defensive mitigation.
 
