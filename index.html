@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSTI Vulnerable Lab - FastAPI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Fira Code', monospace, sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen p-6">
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <header class="border-b border-slate-700 pb-4 flex justify-between items-center">
+            <div>
+                <h1 class="text-3xl font-bold text-emerald-400">SSTI Playground</h1>
+                <p class="text-slate-400 text-sm mt-1">Server-Side Template Injection (FastAPI & Jinja2 Lab)</p>
+            </div>
+            <span class="bg-red-500/10 border border-red-500/30 text-red-400 text-xs px-3 py-1 rounded-full font-semibold">
+                Status: Vulnerable
+            </span>
+        </header>
+
+        <section class="bg-slate-800/80 border border-slate-700 rounded-xl p-6 shadow-lg">
+            <h2 class="text-xl font-semibold text-slate-200 mb-3 flex items-center gap-2">
+                Apa itu SSTI?
+            </h2>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                <strong class="text-emerald-400">Server-Side Template Injection (SSTI)</strong> terjadi ketika input dari pengguna dimasukkan langsung ke dalam string template tanpa dibersihkan (sanitized). Hal ini memungkinkan penyerang menyuntikkan arahan sintaks template engine untuk dieksekusi di sisi server.
+            </p>
+            <div class="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs text-slate-400 space-y-2">
+                <p><span class="text-yellow-400 font-bold">Goal CTF:</span> Coba dapatkan RCE (Remote Code Execution) untuk membaca file sistem!</p>
+                <p><span class="text-blue-400 font-bold">Payload Test:</span> <code class="text-emerald-300">?name={{7*7}}</code> atau <code class="text-emerald-300">?name={{''.__class__.__mro__}}</code></p>
+            </div>
+        </section>
+
+        <section class="bg-slate-800/80 border border-slate-700 rounded-xl p-6 shadow-lg">
+            <h2 class="text-xl font-semibold text-slate-200 mb-4">Uji Input Kamu</h2>
+            <form action="/" method="GET" class="flex gap-3">
+                <input 
+                    type="text" 
+                    name="name" 
+                    placeholder="Masukkan nama atau payload SSTI..."
+                    
+                    class="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                >
+                <button type="submit" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-bold px-6 py-2 rounded-lg transition-all">
+                    Inject!
+                </button>
+            </form>
+        </section>
+
+        <section class="bg-slate-800/80 border border-slate-700 rounded-xl p-6 shadow-lg">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-slate-400 mb-3">
+                Hasil Render Template (Server Output):
+            </h2>
+            <div class="bg-slate-950 border border-emerald-500/30 rounded-lg p-5 text-emerald-400 font-mono text-lg min-h-[80px] flex items-center break-all">
+                {name}
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
